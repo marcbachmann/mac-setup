@@ -12,14 +12,25 @@
     defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -int 1
     defaults write com.apple.finder ShowRemovableMediaOnDesktop -int 1
     defaults write com.apple.finder NewWindowTarget PfHm
-    killall Dock Finder
+    defaults write -g AppleShowAllExtensions -int 1
     ```
 
-  b. Accessibility settings  
+  b. Keyboard settings
+  ```
+  defaults write -g InitialKeyRepeat -int 100
+  defaults write -g KeyRepeat -int 60
+  defaults write -g AppleKeyboardUIMode -int 2
+  ```
+
+  c. Accessibility settings  
   Go to Preferences > Accessibility > Zoom: enable **Use scroll gesture with modifier...**
 
-  c. Keyboard settings  
-  Go to Preferences > Keyboard > Shortcuts: Enable **All controls** at the bottom of the pane
+  d. Set initial audio volume (for silent boot without sound)
+  ```
+  sudo /usr/sbin/nvram SystemAudioVolume=%01
+  ```
+
+  e. Log out of your mac to apply all configurations ;)
 
 
 3. Set up git with ssh
@@ -97,7 +108,7 @@
     ```
 
 
-10. Install node using nvm: https://github.com/creatio11. nix/nvm
+10. Install node using nvm: https://github.com/creationix/nvm
   ```
   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.4/install.sh | bash
   nvm install iojs
